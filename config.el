@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Johnbro"
+      user-mail-address "johnbro@foxmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -23,6 +23,9 @@
 ;;
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+(setq doom-font (font-spec :family "Source Code Pro" :size 14 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "Source Code Pro") ; inherits `doom-font''s :size
+      doom-big-font (font-spec :family "Source Code Pro" :size 20))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -74,3 +77,16 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+(progn
+  (when IS-WINDOWS
+    (setenv "PATH" (concat "C:\\msys64\\usr\\bin;C:\\msys64\\mingw64\\bin;" (getenv "PATH")))))
+
+(after! consult
+  (if IS-WINDOWS
+      (progn
+        (add-to-list 'process-coding-system-alist '("es" gbk . gbk))
+        (add-to-list 'process-coding-system-alist '("explorer" gbk . gbk))
+        (setq consult-locate-args (encode-coding-string "es.exe -i -p -r" 'gbk)))))
+
+(after! which-key
+  (setq which-key-idle-delay 0.05))
