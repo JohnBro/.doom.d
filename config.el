@@ -25,6 +25,7 @@
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 (setq doom-font (font-spec :family "Source Code Pro" :size 14 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "Source Code Pro") ; inherits `doom-font''s :size
+      doom-unicode-font (font-spec :family "Microsoft YaHei" :size 14)
       doom-big-font (font-spec :family "Source Code Pro" :size 20))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -86,7 +87,8 @@
       (progn
         (add-to-list 'process-coding-system-alist '("es" gbk . gbk))
         (add-to-list 'process-coding-system-alist '("explorer" gbk . gbk))
-        (setq consult-locate-args (encode-coding-string "es.exe -i -p -r" 'gbk)))))
+        (setq consult-locate-args (encode-coding-string "es.exe -i -p -r" 'gbk))))
+  (global-set-key (kbd "C-s") 'consult-line))
 
 (after! which-key
   (setq which-key-idle-delay 0.05))
