@@ -92,3 +92,6 @@
 
 (after! which-key
   (setq which-key-idle-delay 0.05))
+
+;; init ui
+(toggle-frame-maximized)
