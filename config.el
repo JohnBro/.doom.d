@@ -93,5 +93,15 @@
 (after! which-key
   (setq which-key-idle-delay 0.05))
 
+(use-package! org-download
+  :after (org-mode)
+  :init
+  :config
+  (setq org-download-screenshot-method
+        (cond
+         (IS-WINDOWS
+          (cond
+           ((executable-find "flameshot") "flameshot gui --raw >%s"))))))
+
 ;; init ui
 (toggle-frame-maximized)

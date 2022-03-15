@@ -51,3 +51,4 @@
 (package! solarized-theme)
 (package! monokai-theme)
 (package! keycast)
+(package! memory-usage)
