@@ -100,28 +100,6 @@
   (setq company-minimum-prefix-length 2)
   (setq company-idle-delay 0.001))
 
-(use-package! org
-  :init
-  (setq org-modules '(;; ol-w3m
-                      ;; ol-bbdb
-                        ol-bibtex
-                      ;; ol-docview
-                      ;; ol-gnus
-                      ; ol-info
-                      ;; ol-irc
-                      ;; ol-mhe
-                      ;; ol-rmail
-                      ;; ol-eww
-                        org-habit
-                      ))
-  :config
-  (defun org-summary-todo (n-done n-not-done)
-    "Switch entry to DONE when all subentries are done, to TODO otherwise."
-    (let (org-log-done org-log-states)   ; turn off logging
-      (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
-  (add-hook 'org-after-todo-statistics-hook #'org-summary-todo)
-  )
-
 (use-package! org-download
   :after (org-mode)
   :init
