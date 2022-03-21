@@ -48,7 +48,12 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+(unpin! org-roam)
+
 (package! solarized-theme)
 (package! monokai-theme)
 (package! keycast)
 (package! memory-usage)
+(package! org-roam-ui)
+(package! org-roam-bibtex)
+(package! org-ref)

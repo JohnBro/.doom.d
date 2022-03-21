@@ -44,7 +44,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Org/")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -52,7 +52,6 @@
 ;;
 ;;   (after! PACKAGE
 ;;     (setq x y))
-;;
 ;; The exceptions to this rule:
 ;;
 ;;   - Setting file/directory variables (like `org-directory')
@@ -82,6 +81,10 @@
   (when IS-WINDOWS
     (setenv "PATH" (concat "C:\\msys64\\usr\\bin;C:\\msys64\\mingw64\\bin;" (getenv "PATH")))))
 
+
+;; init ui
+(toggle-frame-maximized)
+
 (after! consult
   (if IS-WINDOWS
       (progn
@@ -93,6 +96,32 @@
 (after! which-key
   (setq which-key-idle-delay 0.05))
 
+(after! company
+  (setq company-minimum-prefix-length 2)
+  (setq company-idle-delay 0.001))
+
+(use-package! org
+  :init
+  (setq org-modules '(;; ol-w3m
+                      ;; ol-bbdb
+                        ol-bibtex
+                      ;; ol-docview
+                      ;; ol-gnus
+                      ; ol-info
+                      ;; ol-irc
+                      ;; ol-mhe
+                      ;; ol-rmail
+                      ;; ol-eww
+                        org-habit
+                      ))
+  :config
+  (defun org-summary-todo (n-done n-not-done)
+    "Switch entry to DONE when all subentries are done, to TODO otherwise."
+    (let (org-log-done org-log-states)   ; turn off logging
+      (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+  (add-hook 'org-after-todo-statistics-hook #'org-summary-todo)
+  )
+
 (use-package! org-download
   :after (org-mode)
   :init
@@ -103,5 +132,22 @@
           (cond
            ((executable-find "flameshot") "flameshot gui --raw >%s"))))))
 
-;; init ui
-(toggle-frame-maximized)
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;    :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
+
+(use-package! org-roam-bibtex
+  :after org-roam
+  :config
+  (require 'org-ref))
