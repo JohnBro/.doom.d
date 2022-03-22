@@ -79,8 +79,20 @@
 ;; they are implemented.
 (progn
   (when IS-WINDOWS
-    (setenv "PATH" (concat "C:\\msys64\\usr\\bin;C:\\msys64\\mingw64\\bin;" (getenv "PATH")))))
+    (progn
+      (setenv "PATH" (concat "C:\\msys64\\usr\\bin;C:\\msys64\\mingw64\\bin;" (getenv "PATH")))
+      (setq w32-apps-modifier 'super)))
+  (when IS-MAC
+    (progn
+      (setq mac-option-modifier 'meta
+            mac-command-modifier 'super))))
 
+(global-set-key (kbd "s-a") 'mark-whole-buffer)
+(global-set-key (kbd "s-c") 'kill-ring-save)
+(global-set-key (kbd "s-s") 'save-buffer)
+(global-set-key (kbd "s-v") 'yank)
+(global-set-key (kbd "s-z") 'undo)
+(global-set-key (kbd "s-x") 'kill-region)
 
 ;; init ui
 (toggle-frame-maximized)
