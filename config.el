@@ -23,11 +23,12 @@
 ;;
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
-(setq doom-font (font-spec :family "Source Code Pro" :size 14 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "Source Code Pro") ; inherits `doom-font''s :size
-      doom-unicode-font (font-spec :family "Microsoft YaHei" :size 14)
-      doom-big-font (font-spec :family "Source Code Pro" :size 20))
-;;
+(when IS-WINDOWS
+  (setq doom-font (font-spec :family "Source Code Pro" :size 14 :weight 'regular)
+        doom-variable-pitch-font (font-spec :family "Source Code Pro") ; inherits `doom-font''s :size
+        doom-unicode-font (font-spec :family "Microsoft YaHei" :size 14)
+        doom-big-font (font-spec :family "Source Code Pro" :size 20)))
+
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
@@ -113,7 +114,7 @@
   (setq company-idle-delay 0.001))
 
 (use-package! org-download
-  :after (org-mode)
+  :after org
   :init
   :config
   (setq org-download-screenshot-method
@@ -130,7 +131,7 @@
 ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
 ;;         a hookable mode anymore, you're advised to pick something yourself
 ;;         if you don't care about startup time, use
-;;    :hook (after-init . org-roam-ui-mode)
+    :hook (after-init . org-roam-ui-mode)
     :config
     (setq org-roam-ui-sync-theme t
           org-roam-ui-follow t
@@ -141,3 +142,12 @@
   :after org-roam
   :config
   (require 'org-ref))
+
+(use-package! mini-frame
+  :after vertico
+  :config
+  (custom-set-variables
+   '(mini-frame-show-parameters
+     '((top . 10)
+       (width . 0.7)
+       (left . 0.5)))))
