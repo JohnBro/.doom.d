@@ -49,13 +49,10 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 (unpin! org-roam)
-;;(unpin! unicode-fonts)
 
 (package! solarized-theme)
 (package! monokai-theme)
 (package! keycast)
 (package! memory-usage)
 (package! org-roam-ui)
-(package! org-roam-bibtex)
-(package! org-ref)
 (package! mini-frame)

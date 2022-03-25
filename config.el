@@ -82,7 +82,8 @@
   (when IS-WINDOWS
     (progn
       (setenv "PATH" (concat "C:\\msys64\\usr\\bin;C:\\msys64\\mingw64\\bin;" (getenv "PATH")))
-      (setq w32-apps-modifier 'super)))
+      (setq w32-apps-modifier 'super)                   ;; Define Super Key for Windnows
+      (set-selection-coding-system 'utf-16le-dos)))     ;; Fix Chinese character brocken issue
   (when IS-MAC
     (progn
       (setq mac-option-modifier 'meta
@@ -113,6 +114,10 @@
   (setq company-minimum-prefix-length 2)
   (setq company-idle-delay 0.001))
 
+(after! org
+  (setq org-use-sub-superscripts '{})
+  (setq org-export-with-sub-superscripts '{}))
+
 (use-package! org-download
   :after org
   :init
@@ -137,11 +142,6 @@
           org-roam-ui-follow t
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
-
-(use-package! org-roam-bibtex
-  :after org-roam
-  :config
-  (require 'org-ref))
 
 (use-package! mini-frame
   :after vertico
