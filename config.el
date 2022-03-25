@@ -118,16 +118,6 @@
   (setq org-use-sub-superscripts '{})
   (setq org-export-with-sub-superscripts '{}))
 
-(use-package! org-download
-  :after org
-  :init
-  :config
-  (setq org-download-screenshot-method
-        (cond
-         (IS-WINDOWS
-          (cond
-           ((executable-find "flameshot") "flameshot gui --raw >%s"))))))
-
 (use-package! websocket
     :after org-roam)
 
