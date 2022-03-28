@@ -114,10 +114,6 @@
   (setq company-minimum-prefix-length 2)
   (setq company-idle-delay 0.001))
 
-(after! org
-  (setq org-use-sub-superscripts '{})
-  (setq org-export-with-sub-superscripts '{}))
-
 (after! embark
   (defun consult-directory-externally (file)
     "Open FILE path externally using the default application of the system."
