@@ -83,7 +83,9 @@
     (progn
       (setenv "PATH" (concat "C:\\msys64\\usr\\bin;C:\\msys64\\mingw64\\bin;" (getenv "PATH")))
       (setq w32-apps-modifier 'super)                   ;; Define Super Key for Windnows
-      (set-selection-coding-system 'utf-16le-dos)))     ;; Fix Chinese character brocken issue
+      (set-selection-coding-system 'utf-16le-dos)       ;; Fix Chinese character brocken issue
+      (add-to-list 'Info-directory-list "c:/Program Files/Emacs/x86_64/share/info")) ;; Fix Some Info pages missing issue
+    )
   (when IS-MAC
     (progn
       (setq mac-option-modifier 'meta
@@ -130,6 +132,18 @@
                     (file-name-directory (expand-file-name file)))))
   (define-key embark-file-map (kbd "X") #'consult-directory-externally))
 
+(after! org
+  (setq org-export-with-sub-superscripts '{})   ;; fix export "_" issue
+  (defvar +org-capture-case-file "case.org"
+    "Default target for storing timestamped case entries.")
+  (setq +org-capture-case-file
+        (expand-file-name +org-capture-case-file org-directory))
+  (add-to-list 'org-capture-templates
+               '("c" "Case Notes" entry
+                 (file+olp+datetree +org-capture-case-file)
+                 "* %T %?%^G\n%i\n" :prepend t :jump-to-captured t :clock-in t))
+  )
+
 (use-package! websocket
     :after org-roam)
 
@@ -153,3 +167,12 @@
      '((top . 10)
        (width . 0.7)
        (left . 0.5)))))
+
+(use-package! youdao-dictionary
+  :defer t
+  :init
+  (setq url-automatic-caching t)
+  (global-set-key (kbd "C-c y") 'youdao-dictionary-search-at-point)             ;; Enable Cache
+  (setq youdao-dictionary-search-history-file "~/.emacs.d/.local/.youdao")      ;; Set file path for saving search history
+  (setq youdao-dictionary-use-chinese-word-segmentation t)                      ;; Enable Chinese word segmentation support (支持中文分词)
+  )

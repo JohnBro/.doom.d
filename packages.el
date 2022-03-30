@@ -56,3 +56,5 @@
 (package! memory-usage)
 (package! org-roam-ui)
 (package! mini-frame)
+(package! youdao-dictionary
+  :recipe (:host github :repo "xuchunyang/youdao-dictionary.el"))
