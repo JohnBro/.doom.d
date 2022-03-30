@@ -133,11 +133,22 @@
   (define-key embark-file-map (kbd "X") #'consult-directory-externally))
 
 (after! org
-  (setq org-export-with-sub-superscripts '{})   ;; fix export "_" issue
+  (defvar +org-capture-case-file "habits.org"
+    "Default target for storing habits recording entries.
+
+Is relative to `org-directory', unless it is absolute. Is used in Doom's default
+`org-capture-templates'.")
+
   (defvar +org-capture-case-file "case.org"
-    "Default target for storing timestamped case entries.")
+    "Default target for storing timestamped Qualcomm case entries.
+
+Is relative to `org-directory', unless it is absolute. Is used in Doom's default
+`org-capture-templates'.")
+
+  (setq org-export-with-sub-superscripts '{})   ;; fix export "_" issue
   (setq +org-capture-case-file
         (expand-file-name +org-capture-case-file org-directory))
+
   (add-to-list 'org-capture-templates
                '("c" "Case Notes" entry
                  (file+olp+datetree +org-capture-case-file)
