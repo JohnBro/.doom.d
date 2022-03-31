@@ -58,3 +58,9 @@
 (package! mini-frame)
 (package! youdao-dictionary
   :recipe (:host github :repo "xuchunyang/youdao-dictionary.el"))
+(when (not IS-WINDOWS)
+  (package! eaf :recipe (:host github
+                            :repo "manateelazycat/emacs-application-framework"
+                            :files ("*")
+                            :no-byte-compile t))
+  )
