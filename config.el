@@ -133,27 +133,19 @@
   (define-key embark-file-map (kbd "X") #'consult-directory-externally))
 
 (after! org
-  (defvar +org-capture-case-file "habits.org"
+  (defvar +org-capture-habits-file "habits.org"
     "Default target for storing habits recording entries.
 
 Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 `org-capture-templates'.")
 
-  (defvar +org-capture-case-file "case.org"
-    "Default target for storing timestamped Qualcomm case entries.
-
-Is relative to `org-directory', unless it is absolute. Is used in Doom's default
-`org-capture-templates'.")
-
   (setq org-export-with-sub-superscripts '{})   ;; fix export "_" issue
-  (setq +org-capture-case-file
-        (expand-file-name +org-capture-case-file org-directory))
-
-  (add-to-list 'org-capture-templates
-               '("c" "Case Notes" entry
-                 (file+olp+datetree +org-capture-case-file)
-                 "* %T %?%^G\n%i\n" :prepend t :jump-to-captured t :clock-in t))
+  (setq +org-capture-habits-file
+        (expand-file-name +org-capture-habits-file org-directory))
   )
+
+(after! doom-modeline
+  (setq doom-modeline-major-mode-icon t))
 
 (use-package! websocket
     :after org-roam)
