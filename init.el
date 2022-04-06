@@ -19,7 +19,8 @@
                          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
 (doom! :input
-       ;;chinese
+       (:if (not IS-WINDOWS)
+        chinese)
        ;;japanese
        ;;layout            ; auie,ctsrnm is the superior home row
 
@@ -36,7 +37,7 @@
        deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
-       doom-quit         ; DOOM quit-message prompts when you quit Emacs
+       ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
        (emoji +unicode  ; 🙂
               +github)
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
@@ -51,7 +52,8 @@
        (popup +defaults)   ; tame sudden yet inevitable temporary windows
        ;;tabs              ; a tab bar for Emacs
        treemacs          ; a project drawer, like neotree but cooler
-       unicode           ; extended unicode support for various languages
+       (:if IS-WINDOWS
+        unicode)         ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        (window-select     ; visually switch windows
@@ -217,5 +219,5 @@
        (default +bindings +smartparens)
        :private
        qualcomm
-       (:if (not IS-WINDOWS) eaf)
+       ;;(:if (not IS-WINDOWS) eaf)
        )

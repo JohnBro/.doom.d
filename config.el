@@ -37,7 +37,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'monokai)
+(setq doom-theme 'doom-monokai-pro)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -143,6 +143,9 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   (setq +org-capture-habits-file
         (expand-file-name +org-capture-habits-file org-directory))
   )
+
+(after! org-roam
+  (setq org-roam-directory "~/Org-roam/"))
 
 (after! doom-modeline
   (setq doom-modeline-major-mode-icon t))
