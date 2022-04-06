@@ -179,3 +179,12 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   (setq youdao-dictionary-search-history-file "~/.emacs.d/.local/.youdao")      ;; Set file path for saving search history
   (setq youdao-dictionary-use-chinese-word-segmentation t)                      ;; Enable Chinese word segmentation support (支持中文分词)
   )
+
+;; emacs-version >= 28.1 configurations
+(when (not (version< emacs-version "27.2"))
+         (progn
+           (setq use-short-answers t)
+           (setq kill-buffer-delete-auto-save-files t)
+           (setq next-error-message-highlight t)
+           (setq mode-line-compact t)
+           (setq describe-bindings-outline t)))
