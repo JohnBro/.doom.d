@@ -155,7 +155,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
 ;;         a hookable mode anymore, you're advised to pick something yourself
 ;;         if you don't care about startup time, use
-    :hook (after-init . org-roam-ui-mode)
+;;    :hook (after-init . org-roam-ui-mode)
     :config
     (setq org-roam-ui-sync-theme t
           org-roam-ui-follow t
