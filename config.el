@@ -140,6 +140,19 @@
 Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 `org-capture-templates'.")
 
+  ;; I encountered the following message when attempting
+  ;; to export data:
+  ;;
+  ;; "org-export-data: Unable to resolve link: FILE-ID"
+  (defun +org/force-org-rebuild-cache ()
+    "Rebuild the `org-mode' and `org-roam' cache."
+    (interactive)
+    (org-id-update-id-locations)
+    ;; Note: you may need `org-roam-db-clear-all'
+    ;; followed by `org-roam-db-sync'
+    (org-roam-db-sync)
+    (org-roam-update-org-id-locations))
+
   (setq org-export-with-sub-superscripts '{})   ;; fix export "_" issue
   (setq +org-capture-habits-file
         (expand-file-name +org-capture-habits-file org-directory))

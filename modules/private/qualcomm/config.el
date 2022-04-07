@@ -13,4 +13,4 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   (add-to-list 'org-capture-templates
                '("c" "Qualcomm Case Notes" entry
                  (file+olp+datetree +org-capture-case-file)
-                 "* TODO %T [%?,SR#] %^g\n%i\n" :prepare t)))
+                 "* TODO %U [%?,SR#] %^g\n%iDEADLINE: %^{DEADLINE}t\n" :prepare t)))
