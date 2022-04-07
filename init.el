@@ -19,8 +19,7 @@
                          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
 (doom! :input
-       (:if (not IS-WINDOWS)
-        chinese)
+       chinese
        ;;japanese
        ;;layout            ; auie,ctsrnm is the superior home row
 
