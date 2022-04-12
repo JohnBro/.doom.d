@@ -45,7 +45,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Documents/org/")
+(setq org-directory "~/org/")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -156,9 +156,6 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   (setq +org-capture-habits-file
         (expand-file-name +org-capture-habits-file org-directory))
   )
-
-(after! org-roam
-  (setq org-roam-directory "~/Documents/org-roam/"))
 
 (after! doom-modeline
   (setq doom-modeline-major-mode-icon t))
