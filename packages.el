@@ -53,5 +53,6 @@
 (package! memory-usage)
 (package! org-roam-ui)
 (package! mini-frame)
+(package! monokai-theme)
 (package! youdao-dictionary
   :recipe (:host github :repo "xuchunyang/youdao-dictionary.el"))
