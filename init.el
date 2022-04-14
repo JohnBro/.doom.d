@@ -90,8 +90,10 @@
         vterm)             ; the best terminal emulation in Emacs
 
        :checkers
-       syntax              ; tasing you for every semicolon you forget
-       (spell +flyspell)   ; tasing you for misspelling mispelling
+       (:if (not IS-WINDOWS)
+        syntax)            ; tasing you for every semicolon you forget
+       (:if (not IS-WINDOWS)
+        (spell +flyspell)) ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools
@@ -106,7 +108,8 @@
        ;;gist              ; interacting with github gists
        lookup              ; navigate your code and its documentation
        (lsp +peek)              ; M-x vscode
-       magit             ; a git porcelain for Emacs
+       (:if (not IS-WINDOWS)
+        magit)             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        pdf                 ; pdf enhancements
