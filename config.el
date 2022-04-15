@@ -37,7 +37,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(if (display-graphic-p) (setq doom-theme 'doom-one)
+(if IS-GUI (setq doom-theme 'doom-one)
   (setq doom-theme 'doom-dark+))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -129,7 +129,13 @@
                       (_ "xdg-open"))
                     nil 0 nil
                     (file-name-directory (expand-file-name file)))))
-  (define-key embark-file-map (kbd "X") #'consult-directory-externally))
+  (define-key embark-file-map (kbd "X") #'consult-directory-externally)
+  (if (not IS-GUI)
+      ;; Terminal define <C-;> as <escape>, so use <M-;> instead
+      (map! (:map minibuffer-local-map
+             "M-;" #'embark-act)
+            (:map dired-mode-map
+             "M-;" #'embark-act))))
 
 (after! org
   (defvar +org-capture-habits-file "habits.org"

@@ -21,6 +21,8 @@
   (progn
     (setenv "PATH" (concat "C:\\msys64\\usr\\bin;C:\\msys64\\mingw64\\bin;" (getenv "PATH")))))
 
+(defconst IS-GUI (display-graphic-p))
+
 (doom! :input
        chinese
        ;;japanese
