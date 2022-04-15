@@ -82,10 +82,8 @@
 (progn
   (when IS-WINDOWS
     (progn
-      (setenv "PATH" (concat "C:\\msys64\\usr\\bin;C:\\msys64\\mingw64\\bin;" (getenv "PATH")))
       (setq w32-apps-modifier 'super)                   ;; Define Super Key for Windnows
-      (set-selection-coding-system 'utf-16le-dos)       ;; Fix Chinese character brocken issue
-      (add-to-list 'Info-directory-list "c:/Program Files/Emacs/x86_64/share/info")) ;; Fix Some Info pages missing issue
+      (set-selection-coding-system 'utf-16le-dos))      ;; Fix Chinese character brocken issue
     )
   (when IS-MAC
     (progn
