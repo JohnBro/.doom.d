@@ -48,10 +48,8 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
-(unpin! org-roam)
 (package! keycast)
 (package! memory-usage)
-(package! org-roam-ui)
 (package! mini-frame)
 (package! monokai-theme)
 (package! youdao-dictionary

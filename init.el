@@ -38,7 +38,7 @@
         +icons)
 
        :ui
-       ;;deft              ; notational velocity for Emacs
+       deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
@@ -132,9 +132,8 @@
        :lang
        ;;agda              ; types of types of types of types...
        ;;beancount         ; mind the GAAP
-       ;;(cc +lsp)         ; C > C++ == 1
        (:if (not IS-WINDOWS)
-        (cc +lsp)
+        (cc +lsp)          ; C > C++ == 1
         (cc))
        ;;clojure           ; java with a lisp
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
@@ -172,7 +171,8 @@
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
        ;;lua               ; one-based indices? one-based indices
-       markdown          ; writing docs for people to ignore
+       (markdown         ; writing docs for people to ignore
+        +grip)
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
@@ -228,5 +228,6 @@
        (default +bindings +smartparens)
        :private
        qualcomm
+       org-roam
        ;;(:if (not IS-WINDOWS) eaf)
        )
