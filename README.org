@@ -1,0 +1,13 @@
+#+TITLE:  Johnbro's personal doom emacs private configuration
+#+DATE:    April 18, 2022
+#+SINCE:   <replace with next tagged release version>
+#+STARTUP: inlineimages nofold
+
+* Table of Contents :TOC_3:noexport:
+- [[#description][Description]]
+
+* Description
+
+- Add =eaf= *private* module for EAF(Emacs Application Framework) module
+- Add =qualcomm= *private* module to work Qualcomm case issues tracking
+- Add =org-roam= *private* module for my personal org-roam customzation
